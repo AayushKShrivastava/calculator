@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    background-color: lightyellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#calc{
+    box-sizing: border-box;
+    height: 550px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 25px;
+}
+
+.display{
+    height: 15%;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.operate{
+    height: 13%;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-size: 25px;
+    display: flex;
+    gap: 15px;
+}
+
+.clear{
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.equals{
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.content{
+    height: 72%;
+    display: flex;
+    box-sizing: border-box;
+    gap: 15px;
+}
+
+.numbers{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-left: 12px;
+    width: 75%;
+}
+
+.numbers div{
+    height:22%;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 5px;
+    display: flex;
+}
+
+
+
+.operators{
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-right: 12px;
+    width: 25%;
+}
