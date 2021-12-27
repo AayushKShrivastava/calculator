@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="./calc.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="./calculator.js" defer></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,32 +13,38 @@
     <div id="calc">
         <div class="display"></div>
         <div class="operate">
-            <div class="clear">AC</div>
-            <div class="equals">=</div>
+            <button class="clear">AC</button>
+            <button class="backspace"><i class="material-icons">backspace</i></button>
+            <button class="equals">=</button>
         </div>
         <div class="content">
             <div class="numbers">
-                <div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <div class="div1">
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
                 </div>
-                <div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <div class="div1">
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
                 </div>
-                <div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <div class="div1">
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
                 </div>
-                <div>
-                    <div></div>
-                    <div></div>
+                <div class="div1">
+                    <button>0</button>
+                    <button id="decimal">.</button>
                 </div>
             </div>
-            <div class="operators"></div>
+            <div class="operators">
+                <button>+</button>
+                <button>-</button>
+                <button>*</button>
+                <button>/</button>
+            </div>
         </div>
     </div>
     
