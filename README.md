@@ -1,1 +1,2 @@
 # calculator
+In this project I got to learn about taking input into a div container with keyboard. It pushed me to use all my css, html, and javascript skills, including Event Listeners like click, keypress, and keydown, and transition effects.

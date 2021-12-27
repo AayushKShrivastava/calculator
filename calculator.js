@@ -1,5 +1,4 @@
 const display = document.querySelector('.display');
-const decimal = document.getElementById('decimal');
 const numbers = document.querySelectorAll('.div1 button');
 let firstNum = operator = secondNum = '';
 numbers.forEach((button) => {
@@ -7,7 +6,6 @@ numbers.forEach((button) => {
         if(button.textContent == '.'){
             if(operator == ''){
                 if(!firstNum.includes('.')){
-                    console.log(firstNum);
                     firstNum += button.textContent;
                     display.textContent += button.textContent;
                 }   
@@ -120,56 +118,86 @@ function operate(firstNum, secondNum, operator){
     else if(operator == '/') return divide(firstNum, secondNum);
 }
 
-/*if(button.textContent == '='){
-            if(firstNum != '' && secondNum != ''){
-                if(operator == '/' && secondNum == 0){
-                    alert('YOU ARE  NOT ALLOWED TO DIVIIDE A NUMBER BY "0"');
-                    secondNum = '';
-                    console.log(secondNum);
-                    display.textContent = `${display.textContent.slice(0,-1)}`;
-                }
-                else{
-                    display.textContent = '';
-                    console.log(firstNum,secondNum);
-                    display.textContent = `${Math.round(operate(firstNum, secondNum, operator)*100)/100}`;
-                    firstNum = `${display.textContent}`;
-                    secondNum = operator = '';
-                }
-            }
-        }
-        else if(button.classList.contains('backSpace')){
-            display.textContent = `${display.textContent.slice(0,-1)}`;
+//adding keyboard support
+
+window.addEventListener('keypress', (e) => {
+    if((e.charCode >= 48 && e.charCode <= 57) || e.charCode == 46){
+        if(e.key == "."){
             if(operator == ''){
-                firstNum = `${display.textContent}`;
+                if(!firstNum.includes('.')){
+                    firstNum += e.key;
+                    display.textContent += e.key;
+                }   
             }
             else{
-                secondNum = `${secondNum.slice(0,-1)}`;
-            }
-        }
-        else if(button.textContent == 'AC'){
-            display.textContent = '';
-            firstNum = secondNum = operator = '';
-        }
-        else if(button.textContent == '+' || button.textContent == '-' || button.textContent == '*' || button.textContent == '/'){
-            if(firstNum == '' && (button.textContent == '+' || button.textContent == '-')){
-                firstNum = `${button.textContent}`;
-                display.textContent += `${button.textContent}`;
-            }
-            else if(firstNum != ''){
-                operator += `${button.textContent}`;
-                display.textContent += `${button.textContent}`;
+                if(!secondNum.includes('.')){
+                    secondNum += e.key; 
+                    display.textContent += e.key;
+                }
             }
         }
         else{
-            if(operator == ''){
-                display.textContent += `${button.textContent}`;
-                firstNum += `${display.textContent}`;
+            if(operator == ''){ 
+                firstNum += e.key;
+                display.textContent += e.key;
             }
             else{
-                display.textContent += `${button.textContent}`;
-                secondNum += `${button.textContent}`;
-                console.log(secondNum);
+                secondNum += e.key; 
+                display.textContent += e.key;
             }
         }
-    })
-})*/
+    }
+    else if(e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/'){
+        if(firstNum == ''){
+            firstNum += e.key;
+            display.textContent += e.key;
+        }
+        else if(operator == ''){
+            display.textContent += e.key;
+            operator = e.key;
+        }
+        else if(secondNum != ''){
+            if(operator == '/' && secondNum == '0'){
+                alert('YOU ARE  NOT ALLOWED TO DIVIIDE A NUMBER BY "0"');
+                display.textContent = display.textContent.slice(0,-1);
+                secondNum = '';
+            }
+            else{
+                firstNum = operate(firstNum, secondNum, operator);
+                display.textContent = firstNum + e.key;
+                operator = e.key;
+                secondNum = '';
+            }
+        }
+    }
+    else if(e.key == '=' || e.key == 'Enter'){
+        if(firstNum != '' && secondNum != '' && operator != ''){
+            if(operator == '/' && secondNum == '0'){
+                alert('YOU ARE  NOT ALLOWED TO DIVIIDE A NUMBER BY "0"');
+                display.textContent = display.textContent.slice(0,-1);
+                secondNum = '';
+            }
+            else{
+                display.textContent = operate(firstNum, secondNum, operator);
+                firstNum = display.textContent;
+                operator = secondNum = '';
+            }
+        }
+    }
+});
+
+window.addEventListener('keydown', (e) => {
+    if(e.keyCode == 8){
+        lastChar = display.textContent.slice(-1);
+        display.textContent = display.textContent.slice(0,-1);
+        if(lastChar == '+' || lastChar == '-' || lastChar == '*' || lastChar == '/')
+            operator = '';
+        else if(operator == '')
+            firstNum = display.textContent;
+        else
+            secondNum = secondNum.slice(0,-1);
+    }
+    else if(e.keyCode == 46){
+        display.textContent = firstNum = secondNum = operator = '';
+    }
+})
