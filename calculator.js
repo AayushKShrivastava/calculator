@@ -34,8 +34,10 @@ const operators = document.querySelectorAll('.operators button');
 operators.forEach((button) =>{
     button.addEventListener('click', () => {
         if(firstNum == ''){
-            firstNum += button.textContent;
-            display.textContent += button.textContent;
+            if(button.textContent == '+' || button.textContent == '-'){
+                firstNum += button.textContent;
+                display.textContent += button.textContent;
+            }
         }
         else if(operator == ''){
             display.textContent += button.textContent;
@@ -149,8 +151,10 @@ window.addEventListener('keypress', (e) => {
     }
     else if(e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/'){
         if(firstNum == ''){
-            firstNum += e.key;
-            display.textContent += e.key;
+            if(e.key == '+' || e.key == '-'){
+                firstNum += e.key;
+                display.textContent += e.key;
+            }
         }
         else if(operator == ''){
             display.textContent += e.key;
