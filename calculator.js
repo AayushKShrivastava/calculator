@@ -34,7 +34,7 @@ const operators = document.querySelectorAll('.operators button');
 operators.forEach((button) =>{
     button.addEventListener('click', () => {
         if(firstNum == ''){
-            if(button.textContent == '+' || button.textContent == '-'){
+            if(button.textContent == '-'){
                 firstNum += button.textContent;
                 display.textContent += button.textContent;
             }
@@ -151,14 +151,16 @@ window.addEventListener('keypress', (e) => {
     }
     else if(e.key == '+' || e.key == '-' || e.key == '*' || e.key == '/'){
         if(firstNum == ''){
-            if(e.key == '+' || e.key == '-'){
+            if(e.key == '-'){
                 firstNum += e.key;
                 display.textContent += e.key;
             }
         }
         else if(operator == ''){
-            display.textContent += e.key;
-            operator = e.key;
+            if(firstNum != '+' || firstNum != '-'){
+                display.textContent += e.key;
+                operator = e.key;
+            }
         }
         else if(secondNum != ''){
             if(operator == '/' && secondNum == '0'){
