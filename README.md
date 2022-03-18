@@ -1,6 +1,6 @@
 # calculator
 
-Deployed Link: (https://aayushkshrivastava.github.io/calculator/)
+Deployed Link: https://aayushkshrivastava.github.io/calculator/
 
 Users can perform basic arithmetic operations using both on screen and physical keyboard.
 
